@@ -1,0 +1,113 @@
+---
+name: idr0137-peters-bryophytes/experimentA
+version: 1
+
+defaults:
+  # Should the column be processed when creating bulk-annotations (yes/no)
+  include: false
+  # Columns type of the bulk-annotations column
+  type: string
+
+  # If non-empty a string used to separate multiple fields in a column
+  # White space will be stripped
+  split:
+  # Should this column be included in the clients (yes/no)
+  includeclient: true
+  # Should this column be visible in the clients, if no the column should be
+  # hidden in the client but will still be indexed by the searcher (yes/no)
+  visible: true
+  # Should empty values be omitted from the client display
+  omitempty: true
+
+columns:
+
+  - name: Characteristics [GBIF Taxonomy]
+    clientname: GBIF Taxonomy
+    include: true
+
+  - name: Characteristics [Open Tree Taxonomy]
+    clientname: Open Tree Taxonomy
+    include: true
+
+  - name: Characteristics [Specimen Description]
+    clientname: Specimen Description
+    include: true
+
+  - name: Characteristics [Basis of Record]
+    clientname: Basis of Record
+    include: true
+
+  - name: Characteristics [Voucher Specimen]
+    clientname: Voucher Specimen
+    include: true
+
+  - name: Characteristics [Geodetic Datum]
+    clientname: Geodetic Datum
+    include: true
+
+  - name: Characteristics [Latitude]
+    clientname: Latitude
+    include: true
+
+  - name: Characteristics [Longitude]
+    clientname: Longitude
+    include: true
+
+  - name: Characteristics [Elevation]
+    clientname: Elevation
+    include: true
+
+  - name: Characteristics [Coordinate Precision]
+    clientname: Coordinate Precision
+    include: true
+
+  - name: Experimental Condition [Microscope Magnification]
+    clientname: Microscope Magnification
+    include: true
+
+  - name: Comment [Image Description]
+    clientname: Image Description
+    include: true
+
+
+  ######################################################################
+  # mapr groups
+  ######################################################################
+
+  - group:
+      namespace: openmicroscopy.org/mapr/organism
+      columns:
+        - name: Characteristics [Organism]
+          clientname: Organism
+          include: true
+        - name: Characteristics [Alternative Organism Name]
+          clientname: Alternative Organism Name
+          include: yes
+
+  - group:
+      namespace: openmicroscopy.org/mapr/phenotype
+      columns:
+      - name: Phenotype
+        clientname: Phenotype
+        include: yes
+      - name: Phenotype Term Name
+        clientname: Phenotype Term Name
+        include: yes
+      - name: Phenotype Term Accession
+        clientname: Phenotype Term Accession
+        include: yes
+      - name: Phenotype Term Accession
+        clientname: Phenotype Term Accession URL
+        clientvalue: http://www.ebi.ac.uk/cmpo/{{ value|urlencode }}
+        include: yes
+
+
+advanced:
+  ignore_missing_primary_key: true
+  primary_group_keys:
+    - namespace: openmicroscopy.org/mapr/organism
+      keys:
+        - Organism
+    - namespace: openmicroscopy.org/mapr/phenotype
+      keys:
+      - Phenotype
