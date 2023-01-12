@@ -16,7 +16,7 @@ Study Organism Term Accession	129944	122646	5931123	56931
 Study Experiments Number	1																																
 Study External URL																																	
 Study BioImage Archive Accession	S-BIAD443																																	
-Study Public Release Date																																	
+Study Public Release Date	2023-01-17																																	
 																																	
 # Study Publication																																	
 Study PubMed ID																																	
